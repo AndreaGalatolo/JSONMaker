@@ -19,12 +19,18 @@ public class HandlerController implements IHandlerController {
 	IHandlerService service;
 	
 	@Override
-	@RequestMapping(value =  "/json-maker", method = RequestMethod.GET)
+	@RequestMapping(value =  "/json-maker", method = RequestMethod.POST)
 	public Map<String,String> JSONMakerCall(@RequestBody Map<String, String> body) {
 		Map<String,String> response = new HashMap<>();
 		try {
-			response.put("body", service.JSONHandler(body.get("customBody") ));
-			response.put("200", "Success");
+			String req = body.get("customBody");
+			if(req != null && !req.isEmpty()) {
+				response.put("res-body", service.JSONHandler(req));
+				response.put("200", "Success");
+			}else {
+				response.put("403", "no text");
+			}
+			response.put("customBody", req);
 			return response;
 		}catch (Exception e) {
 			response.put("404", e.getMessage());

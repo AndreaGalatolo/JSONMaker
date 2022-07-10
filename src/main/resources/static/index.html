@@ -15,7 +15,7 @@ body {
 h1 {
 	font-family: Arial, sans-serif;
 	font-variant: small-caps;
-	color: #000000;
+	color: #ffffff;
 	background-color: #17ab0d;
 }
 
@@ -54,13 +54,14 @@ input.html-text-box {
 	<p>Paste the text that describe the JSON object that you want to
 		generate</p>
 	<!-- HTML Codes by Quackit.com -->
-	<form method="post"
-		action="https://json-maker.herokuapp.com//json-maker">
-		<textarea name="comments" cols="50" rows="10" class="html-text-box"></textarea>
+	<form method="POST" action="http://json-maker.herokuapp.com/json-maker">
+		<textarea name="customBody" cols="50" rows="10" class="html-text-box"
+		placeholder="Describe the inner value in the FATHER.CHILD form"></textarea>
 		<p>
 			<input type="submit" value="Submit" class="html-text-box"><input
 				type="reset" value="Reset" class="html-text-box">
 		</p>
+		<p id="res-body" name="res-body"></p>
 	</form>
 </body>
 </html>
